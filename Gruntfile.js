@@ -1,6 +1,13 @@
 // Generated on 2014-04-30 using generator-angular 0.8.0
 'use strict';
 
+// Configurable paths
+var yeomanConfig = {
+    app: 'client',
+    test: 'client/test',
+    dist: 'public'
+};
+
 // # Globbing
 // for performance reasons we're only matching one level down:
 // 'test/spec/{,*/}*.js'
@@ -19,11 +26,7 @@ module.exports = function (grunt) {
   grunt.initConfig({
 
     // Project settings
-    yeoman: {
-      // configurable paths
-      app: require('./bower.json').appPath || 'client',
-      dist: 'public'
-    },
+    yeoman: yeomanConfig,
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -39,7 +42,7 @@ module.exports = function (grunt) {
         }
       },
       jsTest: {
-        files: ['test/spec/{,*/}*.js'],
+        files: ['<%= yeoman.test %>/spec/{,*/}*.js'],
         tasks: ['newer:jshint:test', 'karma']
       },
       styles: {
@@ -83,7 +86,7 @@ module.exports = function (grunt) {
           port: 9001,
           base: [
             '.tmp',
-            'test',
+            '<%= yeoman.test %>',
             '<%= yeoman.app %>'
           ]
         }
@@ -107,9 +110,9 @@ module.exports = function (grunt) {
       ],
       test: {
         options: {
-          jshintrc: 'test/.jshintrc'
+          jshintrc: '<%= yeoman.test %>/.jshintrc'
         },
-        src: ['test/spec/{,*/}*.js']
+        src: ['<%= yeoman.test %>/spec/{,*/}*.js']
       }
     },
 
@@ -335,7 +338,7 @@ module.exports = function (grunt) {
     // Test settings
     karma: {
       unit: {
-        configFile: 'karma.conf.js',
+        configFile: '<%= yeoman.test %>/karma.conf.js',
         singleRun: true
       }
     }
