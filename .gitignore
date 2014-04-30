@@ -17,4 +17,4 @@ npm-debug.log
 ########################
 public
 .tmp
-app/bower_components
+client/bower_components
