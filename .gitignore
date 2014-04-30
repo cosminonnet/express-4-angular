@@ -1,5 +1,20 @@
+########################
+# node.js / npm
+########################
 node_modules
-dist
+npm-debug.log
+
+########################
+# misc / editors
+########################
+*~
+*#
+.DS_STORE
+.idea
+
+########################
+# angular
+########################
+public
 .tmp
-.sass-cache
 app/bower_components
