@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var users = require('./routes/users');
+var users = require('./server/routes/users');
 app.use('/users', users);
 
 /// catch 404 and forwarding to error handler
