@@ -3,11 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "express": "~4.0.0",
-    "morgan": "~1.0.0",
-    "cookie-parser": "~1.0.1",
     "body-parser": "~1.0.0",
-    "debug": "~0.7.4"
+    "cookie-parser": "~1.0.1",
+    "debug": "^0.8.1",
+    "express": "~4.0.0",
+    "lodash": "^2.4.1",
+    "mongoose": "^3.8.8",
+    "morgan": "~1.0.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -42,7 +44,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "start": "node ./server/bin/www",
+    "start": "node server.js",
     "test": "grunt test"
   }
 }
