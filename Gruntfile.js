@@ -1,7 +1,13 @@
 // Generated on 2014-04-30 using generator-angular 0.8.0
 'use strict';
 
-// Configurable paths
+// Connect Proxy
+var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest,
+    mountFolder = function (connect, dir) {
+        return connect.static(require('path').resolve(dir));
+    };
+
+// Project settings
 var yeomanConfig = {
     app: 'client',
     test: 'client/test',
@@ -72,13 +78,26 @@ module.exports = function (grunt) {
         hostname: 'localhost',
         livereload: 35729
       },
+      proxies: [
+        {
+          context: '/api',
+          host: 'localhost',
+          port: 3000
+        }
+      ],
       livereload: {
         options: {
           open: true,
           base: [
             '.tmp',
             '<%= yeoman.app %>'
-          ]
+          ],
+          middleware: function (connect) {
+            return [
+              proxySnippet,
+              mountFolder(connect, yeomanConfig.app)
+            ];
+          }
         }
       },
       test: {
@@ -357,6 +376,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'configureProxies',
       'bowerInstall',
       'concurrent:server',
       'autoprefixer',
