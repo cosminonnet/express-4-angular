@@ -10,6 +10,7 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
 var http = require('http');
 var mongoose = require('mongoose');
 
@@ -28,6 +29,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
+app.use(methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
 
 /**

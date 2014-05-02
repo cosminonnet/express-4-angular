@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 /**
- * Feature Schema
+ * Feature Schema.
  */
 var FeatureSchema = new Schema({
 
@@ -39,7 +39,7 @@ var FeatureSchema = new Schema({
 });
 
 /**
- * Statics
+ * Statics.
  */
 FeatureSchema.statics.load = function(id, cb) {
     this.findOne({ _id: id }).exec(cb);
