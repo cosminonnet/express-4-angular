@@ -7,18 +7,18 @@
 var FeatureController = require('./FeatureController'),
     SameOrigin = require('../../middlewares/SameOrigin');
 
-module.exports = function(app) {
+module.exports = function(router) {
 
     // Apply middlewares
-    app.all('/api/feature*', SameOrigin);
+    router.all('/feature*', SameOrigin);
 
     // Setup the routes
-    app.get('/api/feature/:id?', FeatureController.find);
-    app.post('/api/feature', FeatureController.create);
-    app.put('/api/feature/:id?', FeatureController.update);
-    app.del('/api/feature/:id?', FeatureController.destroy);
+    router.get('/feature/:id?', FeatureController.find);
+    router.post('/feature', FeatureController.create);
+    router.put('/feature/:id?', FeatureController.update);
+    router.delete('/feature/:id?', FeatureController.destroy);
 
     // Load the object identified by <:id>
-    app.param('id', FeatureController.load);
+    router.param('id', FeatureController.load);
 
 };

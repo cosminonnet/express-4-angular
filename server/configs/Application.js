@@ -3,7 +3,9 @@
  */
 
 /**
+ * ==============================================
  * Module dependencies.
+ * ==============================================
  */
 var express = require('express');
 var path = require('path');
@@ -15,13 +17,17 @@ var http = require('http');
 var mongoose = require('mongoose');
 
 /**
+ * ==============================================
  * Initializing system variables.
+ * ==============================================
  */
 var config = require('./Database');
 mongoose.connect(config.url);
 
 /**
+ * ==============================================
  * Initializing application.
+ * ==============================================
  */
 var app = express();
 
@@ -33,16 +39,20 @@ app.use(methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
 
 /**
+ * ==============================================
  * Initializing models and routes.
+ * ==============================================
  */
-require('../modules/feature/FeatureModel');
-require('../modules/feature/FeatureRoutes')(app);
+var router = express.Router();
 
-var users = require('../routes/users');
-app.use('/users', users);
+require('../modules/feature/FeatureRoutes')(router);
+
+app.use('/api', router);
 
 /**
+ * ==============================================
  * Error handlers.
+ * ==============================================
  */
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
@@ -55,6 +65,8 @@ app.use(function(err, req, res, next) {
 });
 
 /**
+ * ==============================================
  * Module export.
+ * ==============================================
  */
 module.exports = app;

@@ -7,6 +7,8 @@
 /**
  * Module dependencies.
  */
+require('./FeatureModel');
+
 var mongoose = require('mongoose'),
     Feature = mongoose.model('Feature'),
     _ = require('lodash');
