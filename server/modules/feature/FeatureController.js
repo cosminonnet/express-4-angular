@@ -21,10 +21,10 @@ module.exports = {
     load: function(req, res, next, id) {
         Feature.load(id, function(err, feature) {
             // An error occurred
-            if (err) return res.send(500);
+            if (err) return res.send(500, err);
 
             // Object not found
-            if (!feature) return res.send(404);
+            if (!feature) return res.send(404, 'Feature ' + id + ' not found');
 
             // Add the object to the request
             req.feature = feature;
@@ -42,7 +42,7 @@ module.exports = {
             return res.json(feature);
         } else {
             Feature.find().exec(function (err, list) {
-                if (err) return res.send(500);
+                if (err) return res.send(500, err);
                 return res.json(list);
             });
         }
@@ -55,7 +55,7 @@ module.exports = {
         var feature = new Feature(req.body);
 
         feature.save(function(err) {
-            if (err) return res.send(500);
+            if (err) return res.send(500, err);
             return res.json(feature);
         });
     },
@@ -67,7 +67,7 @@ module.exports = {
         var feature = _.extend(req.feature, req.body);
 
         feature.save(function(err) {
-            if (err) return res.send(500);
+            if (err) return res.send(500, err);
             return res.json(feature);
         });
     },
@@ -80,12 +80,12 @@ module.exports = {
 
         if (feature) {
             feature.remove(function(err) {
-                if (err) return res.send(500);
+                if (err) return res.send(500, err);
                 return res.json(feature);
             });
         } else {
             Feature.find().remove(function (err, removedCount) {
-                if (err) return res.send(500);
+                if (err) return res.send(500, err);
                 return res.json({
                     count : removedCount
                 });

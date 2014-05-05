@@ -5,7 +5,8 @@
 /**
  * Module dependencies.
  */
-var mongoose = require('mongoose'),
+var validator = require('validator'),
+    mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 /**
@@ -20,13 +21,11 @@ var FeatureSchema = new Schema({
 
     title: {
         type: String,
-        default: '',
         trim: true
     },
 
     author: {
         type: String,
-        default: '',
         trim: true
     },
 
@@ -37,6 +36,17 @@ var FeatureSchema = new Schema({
     }
 
 });
+
+/**
+ * Validations.
+ */
+FeatureSchema.path('title').validate(function(title) {
+    return !validator.isNull(title);
+}, 'Title cannot be blank');
+
+FeatureSchema.path('author').validate(function(author) {
+    return !validator.isNull(author);
+}, 'Author cannot be blank');
 
 /**
  * Statics.
