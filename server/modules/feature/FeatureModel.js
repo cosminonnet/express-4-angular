@@ -5,7 +5,7 @@
 /**
  * Module dependencies.
  */
-var validator = require('validator'),
+var validator = require('express-validator').validator,
     mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 

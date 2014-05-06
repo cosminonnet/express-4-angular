@@ -52,6 +52,13 @@ module.exports = {
      * Create.
      */
     create: function(req, res) {
+
+        // Sanitize the input
+        req.sanitize('title').toString();
+        req.sanitize('author').toString();
+        req.sanitize('description').toString();
+
+        // Create the feature
         var feature = new Feature(req.body);
 
         feature.save(function(err) {

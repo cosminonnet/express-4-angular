@@ -7,11 +7,11 @@
     "cookie-parser": "^1.0.1",
     "debug": "^0.8.1",
     "express": "^4.1.1",
+    "express-validator": "^2.1.2",
     "lodash": "^2.4.1",
     "method-override": "^1.0.0",
     "mongoose": "^3.8.8",
-    "morgan": "^1.0.0",
-    "validator": "^3.11.2"
+    "morgan": "^1.0.0"
   },
   "devDependencies": {
     "grunt": "^0.4.4",
