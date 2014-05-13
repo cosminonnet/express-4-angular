@@ -5,7 +5,6 @@
  */
 var express = require('express'),
     path = require('path'),
-    logger = require('morgan'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
     methodOverride = require('method-override'),
@@ -28,7 +27,6 @@ mongoose.connect(config.url);
  */
 var app = express();
 
-app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(expressValidator());
@@ -70,5 +68,7 @@ app.use(function(err, req, res, next) {
 app.set('port', process.env.PORT || 3000);
 
 var server = app.listen(app.get('port'), function() {
-    console.log('Express server listening on port ' + server.address().port);
+    console.log('--------------------------------------------------');
+    console.log('Express server listening on port: ' + server.address().port);
+    console.log('Node environment: ' + process.env.NODE_ENV);
 });
