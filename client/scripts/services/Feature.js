@@ -8,7 +8,7 @@ angular.module('clientApp')
             'save': {method: 'POST'},
             'update': {method: 'PUT'},
             'delete': {method: 'DELETE'},
-            'deleteAll': {method: 'DELETE', params: {featureId: null}}
+            'deleteAll': {method: 'DELETE'}
         });
     }]);
 
