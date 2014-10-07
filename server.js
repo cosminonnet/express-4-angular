@@ -18,7 +18,9 @@ var express = require('express'),
  * ==============================================
  */
 var config = require('./server/configs/Database');
-mongoose.connect(config.url);
+var address = process.env.MONGODB_PORT_27017_TCP_ADDR || 'localhost';
+var port = process.env.MONGODB_PORT_27017_TCP_PORT || 27017;
+mongoose.connect("mongodb://" + address + ":" + port + "/" + config.databaseName);
 
 /**
  * ==============================================

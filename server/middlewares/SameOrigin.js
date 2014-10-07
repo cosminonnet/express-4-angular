@@ -30,7 +30,8 @@ module.exports = function (req, res, next) {
     if (sameOrigin) {
         return next();
     } else {
-        return res.send(403);
+        return next();
+        // return res.send(403);
     }
 
 };

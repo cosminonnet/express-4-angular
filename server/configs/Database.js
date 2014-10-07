@@ -3,5 +3,5 @@
  */
 
 module.exports = {
-    url : 'mongodb://localhost/express-4-angular'
+    databaseName : 'express-4-angular'
 };
