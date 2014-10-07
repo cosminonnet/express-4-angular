@@ -1,0 +1,10 @@
+.git
+.gitattributes
+.gitignore
+
+.idea
+.tmp
+
+node_modules
+public
+client/bower_components
