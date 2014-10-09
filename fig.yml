@@ -1,0 +1,14 @@
+webapp:
+  image: cosminonnet/express-4-angular
+  ports:
+    - "80:3000"
+  links:
+    - mongodb:mongodb
+
+mongodb:
+  image: dockerfile/mongodb
+  command: mongod --smallfiles
+  ports:
+    - "27017:27017"
+  volumes:
+    - /opt/mongodb/data:/data/db
