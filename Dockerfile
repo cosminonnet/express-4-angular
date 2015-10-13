@@ -2,7 +2,7 @@
 
 
 # Pull base image.
-FROM dockerfile/nodejs
+FROM node:0.10
 
 
 # Set the working directory
