@@ -1,0 +1,16 @@
+express4angular:
+  image: express-4-angular
+  restart: always
+  ports:
+    - "80:3000"
+  environment:
+    - NODE_ENV=production
+  links:
+    - mongodb:mongodb
+
+mongodb:
+  image: dockerfile/mongodb:latest
+  command: mongod --smallfiles
+  restart: always
+  volumes:
+    - /var/docker-data/express-4-angular/mongodb:/data/db
