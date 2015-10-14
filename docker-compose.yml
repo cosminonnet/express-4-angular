@@ -9,7 +9,7 @@ express4angular:
     - mongodb:mongodb
 
 mongodb:
-  image: mongo:latest
+  image: mongo:2.6.9
   command: mongod --smallfiles
   restart: always
   volumes:
